@@ -72,18 +72,23 @@ app.post('/send-email', async (req, res) => {
         }
     });
 
+    // Verificação e ajustes nos campos 'from' e 'to'
+    const fromEmail = process.env.EMAIL_USER;
+    const toClientEmail = email;
+    const toAdminEmail = process.env.ADMIN_EMAIL || process.env.EMAIL_USER; // Adiciona a opção de um email de admin separado
+
     // Opções de e-mail para o cliente
     let clientMailOptions = {
-        from: process.env.EMAIL_USER,
-        to: email,
+        from: fromEmail,
+        to: toClientEmail,
         subject: 'Obrigado pelo seu contato',
         text: `Olá ${name},\n\nObrigado por entrar em contato conosco. Em breve retornaremos o seu contato.\n\nAtenciosamente,\nEquipe`
     };
 
     // Opções de e-mail para você
     let adminMailOptions = {
-        from: process.env.EMAIL_USER,
-        to: process.env.EMAIL_USER, // Ou outro endereço de e-mail
+        from: fromEmail,
+        to: toAdminEmail,
         subject: 'Novo feedback/contato recebido',
         text: `Você recebeu um novo feedback/contato.\n\nNome: ${name}\nEmail: ${email}\n\nPor favor, verifique e responda adequadamente.`
     };
