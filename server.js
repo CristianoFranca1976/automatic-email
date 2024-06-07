@@ -1,43 +1,3 @@
-// require('dotenv').config();
-// const express = require('express');
-// const nodemailer = require('nodemailer');
-// const bodyParser = require('body-parser');
-
-// const app = express();
-// app.use(bodyParser.json());
-// app.use(express.static('public')); // Servir arquivos estáticos da pasta public
-
-// app.post('/send-email', async (req, res) => {
-//     const { name, email } = req.body;
-
-//     let transporter = nodemailer.createTransport({
-//         service: 'hotmail',
-//         auth: {
-//             user: process.env.EMAIL_USER,
-//             pass: process.env.EMAIL_PASS
-//         }
-//     });
-
-//     let mailOptions = {
-//         from: process.env.EMAIL_USER,
-//         to: email,
-//         subject: 'Obrigado pelo seu contato',
-//         text: `Olá ${name},\n\nObrigado por entrar em contato conosco. Em breve retornaremos o seu contato.\n\nAtenciosamente,\nEquipe`
-//     };
-
-//     try {
-//         await transporter.sendMail(mailOptions);
-//         res.status(200).send('Email enviado com sucesso.');
-//     } catch (error) {
-//         console.error('Erro ao enviar e-mail:', error);
-//         res.status(500).send('Erro ao enviar e-mail.');
-//     }
-// });
-
-// const PORT = process.env.PORT || 3021;
-// app.listen(PORT, () => {
-//     console.log(`Servidor rodando na porta ${PORT}`);
-// });
 
 require('dotenv').config();
 const express = require('express');
@@ -48,7 +8,7 @@ const app = express();
 app.use(bodyParser.json());
 app.use(express.static('public')); // Servir arquivos estáticos da pasta public
 
-app.post('/send-email', async (req, res) => {
+app.post('https://automatic-email-ebon.vercel.app//send-email', async (req, res) => {
     const { name, email } = req.body;
 
     let transporter = nodemailer.createTransport({
