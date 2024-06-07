@@ -52,5 +52,6 @@ app.post('/send-email', async (req, res) => {
 
 const PORT = process.env.PORT || 3021;
 app.listen(PORT, () => {
-    console.log(`Servidor rodando na porta ${PORT}`);
+    console.log(`Servidor rodando na porta: http://localhost:${PORT}`);
 });
+
